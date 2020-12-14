@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<script type="text/javascript" src="webjars/jquery/2.2.3/jquery.min.js"></script>
+	<script type="text/javascript" src="webjars/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="webjars/bootstrap/4.1.1/css/bootstrap.min.css"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+	<title>Login Page</title>
+</head>
+<body>
+
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img th:src="@{img.png}" src="../static/img.png"class="brand_logo" alt="Logo"/>
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form th:action="@{/login}" th:object="${login}" method="post">
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fa fa-user"></i></span>
+							</div>
+							<input type="text" id="username" name="username" autofocus="autofocus"class="form-control input_user" placeholder="username"/>
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fa fa-key"></i></span>
+							</div>
+							<input type="password" id="password" name="password" class="form-control input_pass" placeholder="password"/>
+						</div>
+						<div style="width:250px" th:switch="${message}">
+						    <p th:case="'Failed'" class="alert alert-danger">
+						        Username or Password Invalid. Please try again 
+						    </p>
+						</div>
+						<div class="d-flex justify-content-center mt-3 login_container">
+					 		<input type="submit" class="btn login_btn" value="Log In"/>
+						</div>
+					</form>
+				</div>
+				
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Don't have an account? <a th:href="@{/signup}" class="ml-2">Sign Up</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
